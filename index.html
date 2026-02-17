@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>For Nisuuuu 💋</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg1:#ffd7e2;
+      --bg2:#f8a6bd;
+      --glass: rgba(255,255,255,.18);
+      --glass2: rgba(255,255,255,.24);
+      --shadow: 0 18px 45px rgba(0,0,0,.22);
+      --hot:#ff3b6a;
+      --hot2:#ff6f95;
+      --txt:#ffffff;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Poppins, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      color:var(--txt);
+      min-height:100vh;
+      overflow-x:hidden;
+      background:
+        radial-gradient(900px 700px at 15% 10%, rgba(255,255,255,.35), transparent 55%),
+        radial-gradient(700px 600px at 85% 20%, rgba(255,255,255,.22), transparent 55%),
+        radial-gradient(900px 700px at 60% 90%, rgba(255,255,255,.18), transparent 55%),
+        linear-gradient(135deg,var(--bg1),var(--bg2));
+    }
+
+    /* Animated bokeh glow */
+    .bokeh{
+      position:fixed; inset:0;
+      pointer-events:none;
+      opacity:.9;
+      filter: blur(1px);
+      background:
+        radial-gradient(circle at 10% 25%, rgba(255,255,255,.22) 0 18px, transparent 19px),
+        radial-gradient(circle at 75% 30%, rgba(255,255,255,.18) 0 24px, transparent 25px),
+        radial-gradient(circle at 25% 75%, rgba(255,255,255,.16) 0 28px, transparent 29px),
+        radial-gradient(circle at 85% 80%, rgba(255,255,255,.12) 0 20px, transparent 21px);
+      animation: bokehMove 8s ease-in-out infinite alternate;
+      z-index:0;
+    }
+    @keyframes bokehMove{
+      from{transform:translateY(0)}
+      to{transform:translateY(-22px)}
+    }
+
+    /* Screens */
+    .screen{display:none; min-height:100vh; padding:46px 16px 70px; position:relative; z-index:2;}
+    .screen.active{display:block}
+    .wrap{max-width:1100px; margin:0 auto;}
+
+    /* Glass hero */
+    .hero{
+      padding:28px 18px 26px;
+      border-radius:30px;
+      background:var(--glass);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+      text-align:center;
+    }
+    .hero:before{
+      content:"";
+      position:absolute; inset:-40px;
+      background:
+        radial-gradient(520px 250px at 30% 25%, rgba(255,255,255,.28), transparent 60%),
+        radial-gradient(480px 240px at 85% 75%, rgba(255,255,255,.16), transparent 60%);
+      transform: rotate(-7deg);
+      opacity:.95;
+    }
+    .hero > *{position:relative}
+
+    .topline{
+      font-size:14px;
+      opacity:.95;
+      letter-spacing:.4px;
+      margin-bottom:6px;
+    }
+    h1{
+      font-family:"Great Vibes", cursive;
+      font-size: clamp(56px, 7vw, 94px);
+      margin: 6px 0 8px;
+      text-shadow: 0 12px 28px rgba(0,0,0,.20);
+    }
+    .sub{
+      margin:0 0 16px;
+      font-size: clamp(14px, 2.2vw, 18px);
+      opacity:.95;
+    }
+
+    /* Buttons */
+    .btnRow{
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:12px;
+    }
+    button{
+      border:none;
+      cursor:pointer;
+      border-radius:999px;
+      padding:14px 22px;
+      font-weight:700;
+      color:#fff;
+      transition:.22s transform, .22s filter;
+      box-shadow: 0 14px 28px rgba(0,0,0,.20);
+    }
+    .btnHot{ background: linear-gradient(135deg, var(--hot), var(--hot2)); }
+    .btnGhost{
+      background: rgba(255,255,255,.18);
+      border:1px solid rgba(255,255,255,.22);
+      font-weight:600;
+      box-shadow:none;
+    }
+    button:hover{transform: translateY(-2px) scale(1.03); filter: brightness(1.03);}
+
+    /* Celebration floating emojis */
+    .float{
+      position:fixed;
+      pointer-events:none;
+      filter: drop-shadow(0 10px 18px rgba(0,0,0,.18));
+      animation: floatUp linear forwards;
+      opacity:.95;
+      z-index:1;
+    }
+    @keyframes floatUp{
+      from{transform:translateY(110vh) rotate(0deg); opacity:1}
+      to{transform:translateY(-15vh) rotate(220deg); opacity:0}
+    }
+
+    /* Confetti */
+    .confetti{
+      position:fixed;
+      width:10px; height:16px;
+      border-radius:4px;
+      pointer-events:none;
+      animation: confFall linear forwards;
+      z-index:1;
+      opacity:.95;
+    }
+    @keyframes confFall{
+      from{transform:translateY(-10vh) rotate(0deg); opacity:1}
+      to{transform:translateY(110vh) rotate(900deg); opacity:0}
+    }
+
+    /* Big memory wall */
+    .sectionTitle{
+      margin:24px 0 12px;
+      font-weight:800;
+      letter-spacing:.35px;
+      opacity:.95;
+      text-align:center;
+    }
+    .memoryCard{
+      background: var(--glass2);
+      border-radius:30px;
+      padding:18px;
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:18px;
+    }
+    @media (max-width:900px){ .grid{grid-template-columns:1fr;} }
+
+    /* Polaroid frame */
+    .polaroid{
+      background: rgba(255,255,255,.92);
+      color:#222;
+      border-radius:18px;
+      padding:14px 14px 18px;
+      box-shadow: 0 22px 45px rgba(0,0,0,.28);
+      position:relative;
+      transform: rotate(var(--rot));
+      transition: .25s transform;
+    }
+    .polaroid:hover{transform: rotate(0deg) translateY(-6px) scale(1.01);}
+    .tape{
+      position:absolute;
+      top:-10px; left:22px;
+      width:70px; height:20px;
+      background: rgba(255,255,255,.45);
+      border:1px solid rgba(255,255,255,.26);
+      border-radius:10px;
+      transform: rotate(-10deg);
+      box-shadow: 0 12px 22px rgba(0,0,0,.12);
+    }
+    .polaroid img{
+      width:100%;
+      height:340px;
+      object-fit:cover;
+      border-radius:14px;
+      display:block;
+    }
+    .cap{
+      margin-top:10px;
+      font-weight:800;
+      text-align:left;
+    }
+
+    /* Kiss overlay */
+    .mwah{
+      position:fixed;
+      left:50%; top:50%;
+      transform:translate(-50%,-50%) scale(.98);
+      font-size: clamp(76px, 10vw, 130px);
+      opacity:0;
+      pointer-events:none;
+      z-index:50;
+      filter: drop-shadow(0 18px 40px rgba(0,0,0,.25));
+      transition:.22s;
+    }
+    .mwah.show{opacity:1; transform:translate(-50%,-50%) scale(1.04);}
+
+    /* Kiss shower */
+    .kissDrop{
+      position:fixed;
+      top:-25px;
+      pointer-events:none;
+      animation: kissFall 2.8s linear forwards;
+      z-index:3;
+      filter: drop-shadow(0 10px 14px rgba(0,0,0,.18));
+    }
+    @keyframes kissFall{
+      to{
+        transform:translateY(110vh) rotate(360deg);
+        opacity:0;
+      }
+    }
+
+    /* Page 2 split */
+    .split{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap:18px;
+      margin-top:22px;
+      align-items:stretch;
+    }
+    @media (max-width:900px){ .split{grid-template-columns:1fr;} }
+
+    .panel{
+      border-radius:30px;
+      background: var(--glass);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .panelHead{
+      padding:16px 18px 0;
+      font-weight:800;
+      opacity:.95;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+    }
+    .badge{
+      font-size:12px;
+      padding:6px 10px;
+      border-radius:999px;
+      background: rgba(255,255,255,.18);
+      border:1px solid rgba(255,255,255,.22);
+      white-space:nowrap;
+    }
+
+    .bigPhoto{
+      padding:18px;
+      position:relative;
+      cursor:pointer;
+    }
+
+    /* Heartbeat glow on photo */
+    .bigPhoto img{
+      width:100%;
+      height:540px;
+      border-radius:22px;
+      object-fit:cover;
+      display:block;
+      background: rgba(255,255,255,.18);
+      animation: heartbeat 2.2s infinite;
+      box-shadow: 0 18px 40px rgba(0,0,0,.25);
+    }
+    @media (max-width:900px){ .bigPhoto img{height:420px;} }
+
+    @keyframes heartbeat{
+      0%{ transform:scale(1); box-shadow:0 0 0 rgba(255,0,90,0.0);}
+      25%{ transform:scale(1.02); box-shadow:0 0 25px rgba(255,0,90,0.35);}
+      50%{ transform:scale(1); box-shadow:0 0 10px rgba(255,0,90,0.15);}
+      75%{ transform:scale(1.025); box-shadow:0 0 28px rgba(255,0,90,0.4);}
+      100%{ transform:scale(1);}
+    }
+
+    .letterWrap{padding:18px;}
+    .letterBox{
+      background: rgba(255,255,255,.92);
+      color:#1a1a1a;
+      border-radius:22px;
+      padding:18px 18px 20px;
+      min-height:540px;
+      box-shadow: 0 18px 40px rgba(0,0,0,.22);
+      position:relative;
+      overflow:hidden;
+    }
+    .letterBox:before{
+      content:"";
+      position:absolute; inset:-40px;
+      background:
+        radial-gradient(420px 220px at 20% 20%, rgba(255,59,106,.18), transparent 60%),
+        radial-gradient(420px 220px at 80% 85%, rgba(255,111,149,.16), transparent 60%);
+      transform: rotate(7deg);
+      opacity:.9;
+    }
+    .letterBox > *{position:relative}
+    .letterTitle{
+      font-family:"Great Vibes";
+      font-size:56px;
+      color:#ff2e63;
+      margin:2px 0 10px;
+    }
+    #typed{
+      white-space:pre-wrap;
+      text-align:left;
+      font-size:18px;
+      line-height:1.75;
+    }
+
+    /* Kiss stamp on photo */
+    .stamp{
+      position:absolute;
+      font-size:40px;
+      pointer-events:none;
+      animation: stamp 1.6s ease forwards;
+      filter: drop-shadow(0 10px 12px rgba(0,0,0,.18));
+    }
+    @keyframes stamp{
+      0%{transform:scale(0) rotate(-40deg); opacity:0;}
+      40%{transform:scale(1.35) rotate(10deg); opacity:1;}
+      100%{transform:scale(1) rotate(0deg); opacity:0;}
+    }
+
+    .tiny{
+      margin-top:16px;
+      text-align:center;
+      opacity:.9;
+      font-size:13px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bokeh"></div>
+  <div class="mwah" id="mwah">💋</div>
+
+  <!-- PAGE 1 -->
+  <section class="screen active" id="page1">
+    <div class="wrap">
+      <div class="hero">
+        <div class="topline">🎉✨💖 Celebration Mode ON 💖✨🎉</div>
+        <h1>Happy Kiss Day, Nisuuuu 💋</h1>
+        <p class="sub">One kiss, a million feelings… and all of them are yours 😚</p>
+
+        <div class="btnRow">
+          <button class="btnHot" onclick="kiss()">Tap for a Kiss 💋</button>
+          <button class="btnGhost" onclick="openHeart()">Open My Heart 💌</button>
+        </div>
+      </div>
+
+      <h3 class="sectionTitle">📸 Our Memory Wall (Bigger + Framed)</h3>
+      <div class="memoryCard">
+        <div class="grid">
+          <div class="polaroid" style="--rot:-2.5deg">
+            <div class="tape"></div>
+            <img src="photo1.jpg" alt="memory 1">
+            <div class="cap">1) our first photo 💗</div>
+          </div>
+
+          <div class="polaroid" style="--rot:2deg">
+            <div class="tape"></div>
+            <img src="photo2.jpg" alt="memory 2">
+            <div class="cap">2) our cutuuuu moment 🥺✨</div>
+          </div>
+
+          <div class="polaroid" style="--rot:-1.2deg">
+            <div class="tape"></div>
+            <img src="photo3.jpg" alt="memory 3">
+            <div class="cap">3) still miss this day 💞</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tiny">Made with love — Pranay 💋</div>
+    </div>
+  </section>
+
+  <!-- PAGE 2 -->
+  <section class="screen" id="page2">
+    <div class="wrap">
+      <div class="hero" style="margin-top:0">
+        <div class="topline">💖💫 Only for my Nisuuuu 💫💖</div>
+        <h1>My Heart, Opened 💌</h1>
+        <p class="sub">Click the photo to place kisses 😚💋</p>
+
+        <div class="btnRow">
+          <button class="btnGhost" onclick="goBack()">⬅ Back</button>
+          <button class="btnHot" onclick="kiss(true)">Celebrate Again 🎊</button>
+        </div>
+      </div>
+
+      <div class="split">
+        <div class="panel">
+          <div class="panelHead">
+            <div>🌸 Our Photo</div>
+            <div class="badge">Put: <b>main.jpg</b></div>
+          </div>
+
+          <div class="bigPhoto" onclick="kissStamp(event)">
+            <img src="main.jpg" alt="Main Photo">
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panelHead">
+            <div>💌 Love Letter</div>
+            <div class="badge">Typing…</div>
+          </div>
+
+          <div class="letterWrap">
+            <div class="letterBox">
+              <div class="letterTitle">Nisuuuu 💗</div>
+              <div id="typed"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tiny">— Yours, Pranay ❤️</div>
+    </div>
+  </section>
+
+  <script>
+    /* Background celebration (continuous) */
+    const floatEmojis = ["🎉","✨","💖","💗","💘","🥳","🎊","🌸","🫶","💋","⭐","💞","😍"];
+    function spawnFloat(){
+      const e = document.createElement("div");
+      e.className = "float";
+      e.textContent = floatEmojis[Math.floor(Math.random()*floatEmojis.length)];
+      e.style.left = Math.random()*100 + "vw";
+      e.style.fontSize = (18 + Math.random()*26) + "px";
+      e.style.animationDuration = (3.2 + Math.random()*4.2) + "s";
+      e.style.opacity = (0.60 + Math.random()*0.40);
+      document.body.appendChild(e);
+      setTimeout(()=>e.remove(), 8500);
+    }
+    setInterval(spawnFloat, 220);
+
+    function spawnConfetti(count=6){
+      for(let i=0;i<count;i++){
+        const c = document.createElement("div");
+        c.className = "confetti";
+        c.style.left = Math.random()*100 + "vw";
+        c.style.background = `hsl(${Math.floor(Math.random()*360)}, 95%, 72%)`;
+        c.style.animationDuration = (2.8 + Math.random()*2.8) + "s";
+        c.style.opacity = (0.65 + Math.random()*0.35);
+        document.body.appendChild(c);
+        setTimeout(()=>c.remove(), 6500);
+      }
+    }
+    setInterval(()=>spawnConfetti(4), 420);
+
+    /* Kiss overlay + confetti + kiss shower */
+    function kiss(extra=false){
+      const mwah = document.getElementById("mwah");
+      mwah.classList.add("show");
+      setTimeout(()=>mwah.classList.remove("show"), 450);
+
+      spawnConfetti(extra ? 18 : 10);
+
+      // small 💋 shower on every kiss click
+      const drops = extra ? 55 : 40;
+      for(let i=0;i<drops;i++){
+        const k = document.createElement("div");
+        k.className = "kissDrop";
+        k.textContent = "💋";
+        k.style.left = Math.random()*100 + "vw";
+        k.style.fontSize = (16 + Math.random()*28) + "px";
+        k.style.animationDuration = (2.2 + Math.random()*1.6) + "s";
+        k.style.opacity = (0.65 + Math.random()*0.35);
+        document.body.appendChild(k);
+        setTimeout(()=>k.remove(), 3500);
+      }
+    }
+
+    /* Page switching */
+    function openHeart(){
+      document.getElementById("page1").classList.remove("active");
+      document.getElementById("page2").classList.add("active");
+      window.scrollTo({top:0, behavior:"smooth"});
+      kiss(true);
+      typeLetterOnce();
+    }
+    function goBack(){
+      document.getElementById("page2").classList.remove("active");
+      document.getElementById("page1").classList.add("active");
+      window.scrollTo({top:0, behavior:"smooth"});
+    }
+
+    /* Kiss stamps on photo click */
+    function kissStamp(e){
+      const wrap = e.currentTarget;
+      const stamp = document.createElement("div");
+      stamp.className = "stamp";
+      stamp.textContent = "💋";
+
+      // position relative to .bigPhoto
+      const rect = wrap.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      stamp.style.left = (x - 14) + "px";
+      stamp.style.top  = (y - 18) + "px";
+
+      wrap.appendChild(stamp);
+      setTimeout(()=>stamp.remove(), 1500);
+    }
+
+    /* Love letter typing (cute+flirty, no explicit) */
+    const letter =
+`Happy kiss day my jaan 💋
+Haa pata hai aaj kiss day nahi hai… par koi baat nahi—samajh lo aaj hi hai 😚
+
+I love you, jaanu.
+Mujhe tumko bohot kiss karna hai…
+pehle tumko apne paas kheenchna hai,
+phir forehead pe… phir cheek pe… aur phir ek pyaara sa “mwah” 💞
+
+Jaan, hum dono ki first kiss kab hogi? 👀
+Main tumhe chhodunga nahi (pyaar se 😤💗)
+Bas tum “haa” bol do… baaki main sambhaal lunga 😌💋
+
+Tum hamesha mere saath rahogi, mere paas.
+I love you so much.
+
+— Pranay ❤️`;
+
+    let typed = false;
+    function typeLetterOnce(){
+      if(typed) return;
+      typed = true;
+      const out = document.getElementById("typed");
+      let i=0;
+      const timer = setInterval(()=>{
+        out.textContent += letter.charAt(i);
+        i++;
+        if(i >= letter.length) clearInterval(timer);
+      }, 26);
+    }
+  </script>
+</body>
+</html>
